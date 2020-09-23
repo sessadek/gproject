@@ -4,8 +4,9 @@ Gprojet
 
 ## Les développeurs de l'application
 
-Amine messaoudi
-salim essadek
+Amine Messaoudi
+Salim Essadek
+
 
 ## Base de données 
 
