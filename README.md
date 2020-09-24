@@ -4,9 +4,9 @@ Gprojet
 
 ## Les développeurs de l'application
 
-Hamza Natek
-Hicham Benradi
-Abderrahman Isseksioui
+Amine Messaoudi
+Salim Essadek
+
 
 ## Base de données 
 
