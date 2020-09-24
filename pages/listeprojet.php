@@ -86,9 +86,9 @@
 															<th title="Adjoint">
 																Adjoint
 															</th>
-															<th title="Type du projet">
+															<!-- <th title="Type du projet">
 																Type du projet
-															</th>
+															</th> -->
 															<th title="Etat de paiement">
 																Etat de paiement
 															</th>
@@ -107,6 +107,7 @@
 														$espace=" " ;
 															$resultats = Projet::getprojetListe();
 															//Tools::d($resultats);
+															// <td>".$resultat['libelle_type']."</td>
 															foreach ($resultats as $resultat) {
 													    		echo "<tr>
 													    			<td>".$resultat['id_projet']."</td>
@@ -114,7 +115,7 @@
 													    			<td>".$resultat['raison_social']."</td>
 													    			<td>".$resultat['nom']."".$espace."".$resultat['prenom']."</td>
 													    			<td>".$resultat['nom1']."".$espace."".$resultat['prenom1']."</td>
-													    			<td>".$resultat['libelle_type']."</td>
+													    			
 													    			<td>".$resultat['libelle_paiment']."</td>
 													    			<td>".$resultat['date_debut']."</td>
 													    			<td>".$resultat['date_livraison']."</td>

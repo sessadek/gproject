@@ -111,7 +111,7 @@
 											</div>
 										</div>
 										<div class="form-group m-form__group row">
-											<div class="col-lg-6 controller">
+											<!-- <div class="col-lg-6 controller">
 												<label class="">
 													Type du projet :
 												</label>
@@ -123,7 +123,7 @@
 															}
 														?>
 												</select>
-											</div>
+											</div> -->
 											<div class="col-lg-6 controller">
 												<label>
 													Etat de paiement :

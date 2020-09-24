@@ -30,18 +30,18 @@ class Projet
 	}
 
 
-	public function add($nom_projet, $description, $id_societe, $id_resp1, $id_resp2, $id_type, $etat, $date1, $date2, $etat_projet, $montant)
+	public function add($nom_projet, $description, $id_societe, $id_resp1, $id_resp2,  $etat, $date1, $date2, $etat_projet, $montant) // $id_type, 
 	{
 		global $conn;
 
-		$query = $conn->prepare("INSERT INTO projets(nom_projet, description, id_societe, id_responsable1,id_responsable2, id_type, etat_paiment, date_debut, date_livraison, etat_projet, montant) VALUES (:nom, :description, :id_societe, :id_resp1, :id_resp2, :id_type, :etat,:date1,:date2, :etat_projet, :montant)");
+		$query = $conn->prepare("INSERT INTO projets(nom_projet, description, id_societe, id_responsable1,id_responsable2,  etat_paiment, date_debut, date_livraison, etat_projet, montant) VALUES (:nom, :description, :id_societe, :id_resp1, :id_resp2,  :etat,:date1,:date2, :etat_projet, :montant)"); // id_type, :id_type,
 
 		$query->bindValue(':nom', $nom_projet);
 		$query->bindValue(':description', $description);
 		$query->bindValue(':id_societe', $id_societe);
    		$query->bindValue(':id_resp1', $id_resp1);
     	$query->bindValue(':id_resp2', $id_resp2);
-    	$query->bindValue(':id_type', $id_type);
+    	// $query->bindValue(':id_type', $id_type);
     	$query->bindValue(':etat', $etat);
     	$query->bindValue(':date1', $date1);
     	$query->bindValue(':date2', $date2);
@@ -53,17 +53,17 @@ class Projet
 		else
 			return false;
 	}
-	public function edit($id_projet, $nom_projet, $description, $id_societe, $id_resp1, $id_resp2, $id_type, $etat, $date1, $date2, $etat_projet, $montant)
+	public function edit($id_projet, $nom_projet, $description, $id_societe, $id_resp1, $id_resp2,  $etat, $date1, $date2, $etat_projet, $montant) //$id_type,
 	{
 		global $conn;
-		$query = $conn->prepare("UPDATE projets SET nom_projet =(:nom), description =(:description), id_societe =(:id_societe), id_responsable1 =(:id_resp1), id_responsable2 =(:id_resp2),id_type = (:id_type), etat_paiment = (:etat), date_debut=(:date1),date_livraison=(:date2), etat_projet = :etat_projet, montant = :montant  WHERE id_projet = :id_projet");
+		$query = $conn->prepare("UPDATE projets SET nom_projet =(:nom), description =(:description), id_societe =(:id_societe), id_responsable1 =(:id_resp1), id_responsable2 =(:id_resp2), etat_paiment = (:etat), date_debut=(:date1),date_livraison=(:date2), etat_projet = :etat_projet, montant = :montant  WHERE id_projet = :id_projet"); // ,id_type = (:id_type)
 		$query->bindValue(':id_projet', $id_projet);
 		$query->bindValue(':nom', $nom_projet);
 		$query->bindValue(':description', $description);
 		$query->bindValue(':id_societe', $id_societe);
 		$query->bindValue(':id_resp1', $id_resp1);
 		$query->bindValue(':id_resp2', $id_resp2);
-		$query->bindValue(':id_type', $id_type);
+		// $query->bindValue(':id_type', $id_type);
 		$query->bindValue(':etat', $etat);
 		$query->bindValue(':date1', $date1);
 		$query->bindValue(':date2', $date2);
