@@ -24,18 +24,18 @@ class Societe
 	public function getSocieteList()
 	{
 		global $conn;
-		$query = $conn->query("SELECT * FROM societes st join secteurs sc on sc.id_secteur=st.id_secteur");
+		$query = $conn->query("SELECT * FROM societes"); //  st join secteurs sc on sc.id_secteur=st.id_secteur
     	$resultats = $query->fetchAll();
     	return $resultats;
 	}
-	public function add($raison_social, $id_secteur, $adresse, $note, $tele, $email, $contact, $tele_primaire)
+	public function add($raison_social,  $adresse, $note, $tele, $email, $contact, $tele_primaire) // $id_secteur,
 	{
 		global $conn;
 
-		$query = $conn->prepare("INSERT INTO societes (raison_social, id_secteur, note, adresse, tele, contact_principale_nom, contact_principale_tele, email) VALUES (:raison_social, :id_secteur, :note, :adresse, :tele, :contact, :tele_primaire,:email)");
+		$query = $conn->prepare("INSERT INTO societes (raison_social,  note, adresse, tele, contact_principale_nom, contact_principale_tele, email) VALUES (:raison_social,  :note, :adresse, :tele, :contact, :tele_primaire,:email)"); // id_secteur, :id_secteur,
 
 		$query->bindValue(':raison_social', $raison_social);
-		$query->bindValue(':id_secteur', $id_secteur);
+		// $query->bindValue(':id_secteur', $id_secteur);
 		$query->bindValue(':note', $note);
    		$query->bindValue(':adresse', $adresse);
     	$query->bindValue(':tele', $tele);
@@ -49,13 +49,13 @@ class Societe
 			return false;
 	}
 
-	public function edit($id_societe, $raison_social, $id_secteur, $adresse, $note, $tele, $email, $contact, $tele_primaire)
+	public function edit($id_societe, $raison_social, $adresse, $note, $tele, $email, $contact, $tele_primaire) //  $id_secteur,
 	{
 		global $conn;
-		$query = $conn->prepare("UPDATE societes SET raison_social =(:raison_social), id_secteur =(:id_secteur), adresse =(:adresse), note =(:note), tele =(:tele), email =(:email), contact_principale_nom = (:contact), contact_principale_tele = (:tele_primaire) WHERE id_societe = :id_societe");
+		$query = $conn->prepare("UPDATE societes SET raison_social =(:raison_social),  adresse =(:adresse), note =(:note), tele =(:tele), email =(:email), contact_principale_nom = (:contact), contact_principale_tele = (:tele_primaire) WHERE id_societe = :id_societe"); // id_secteur =(:id_secteur),
 		$query->bindValue(':id_societe', $id_societe);
 		$query->bindValue(':raison_social', $raison_social);
-		$query->bindValue(':id_secteur', $id_secteur);
+		// $query->bindValue(':id_secteur', $id_secteur);
 		$query->bindValue(':adresse', $adresse);
 		$query->bindValue(':note', $note);
 		$query->bindValue(':tele', $tele);

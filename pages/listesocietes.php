@@ -77,9 +77,9 @@
 															<th title="Field #2">
 																Raison Social
 															</th>
-															<th title="Field #3">
+															<!-- <th title="Field #3">
 																Secteur
-															</th>
+															</th> -->
 															<th title="Field #4">
 																Note
 															</th>
@@ -106,11 +106,12 @@
 														<?php 
 															$resultats = Societe::getSocieteList();
 															//Tools::d($resultats);
+															// <td>".$resultat['libelle_secteur']."</td>
 															foreach ($resultats as $resultat) {
 													    		echo "<tr>
 													    			<td>".$resultat['id_societe']."</td>
 													    			<td>".$resultat['raison_social']."</td>
-													    			<td>".$resultat['libelle_secteur']."</td>
+													    			
 													    			<td><div id='note_".$resultat['id_societe']."'></div>
 
 													    			<script type='text/javascript'>

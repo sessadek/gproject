@@ -41,7 +41,7 @@ if (isset($_POST)) {
 						}
 						$upload_folder = __DIR__."/uploads/logo/";
 						if (move_uploaded_file($_FILES['logo']['tmp_name'], $upload_folder. $fname)) {
-							if(Societe::add($_POST['raison_social'], $_POST['secteur'], $_POST['adresse'], $_POST['note'], $_POST['phone'], $_POST['email'], $_POST['contact_principale_nom'], $_POST['contact_principale_tele'])){
+							if(Societe::add($_POST['raison_social'], /*$_POST['secteur'],*/ $_POST['adresse'], $_POST['note'], $_POST['phone'], $_POST['email'], $_POST['contact_principale_nom'], $_POST['contact_principale_tele'])){
 					    		$confirm = "Soiété ajouté";
 					    		header('Location: pages/listesocietes.php?confirm='.$confirm);
 					    	}else{
@@ -54,7 +54,7 @@ if (isset($_POST)) {
 						}
 
 					}else{
-						if(Societe::add($_POST['raison_social'], $_POST['secteur'], $_POST['adresse'], $_POST['note'], $_POST['phone'], $_POST['email'], $_POST['contact_principale_nom'], $_POST['contact_principale_tele'])){
+						if(Societe::add($_POST['raison_social'], /*$_POST['secteur'],*/ $_POST['adresse'], $_POST['note'], $_POST['phone'], $_POST['email'], $_POST['contact_principale_nom'], $_POST['contact_principale_tele'])){
 				    		$confirm = "Soiété ajouté";
 				    		header('Location: pages/listesocietes.php?confirm='.$confirm);
 				    	}else{
@@ -65,7 +65,7 @@ if (isset($_POST)) {
 					break;
 					
 				case 'edit':
-					if(Societe::edit($_POST['id_societe'],$_POST['raison_social'], $_POST['secteur'], $_POST['adresse'], $_POST['note'], $_POST['phone'], $_POST['email'], $_POST['contact_principale_nom'], $_POST['contact_principale_tele'])){
+					if(Societe::edit($_POST['id_societe'],$_POST['raison_social'], /*$_POST['secteur'],*/ $_POST['adresse'], $_POST['note'], $_POST['phone'], $_POST['email'], $_POST['contact_principale_nom'], $_POST['contact_principale_tele'])){
 			    		$confirm = "Soiété modifié";
 			    		header('Location: pages/listesocietes.php?confirm='.$confirm);
 			    	}else{

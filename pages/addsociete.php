@@ -47,7 +47,7 @@
 													<input type="text" name="raison_social" class="form-control m-input" placeholder="Raison Social..." <?php if(isset($societe['raison_social'])){ echo "value='".$societe['raison_social']."'";} ?>>
 
 												</div>
-												<div class="col-lg-6 controller">
+												<!-- <div class="col-lg-6 controller">
 													<label class="">
 														Secteur:
 													</label>
@@ -66,7 +66,7 @@
 															}
 														?>
 													</select>
-												</div>
+												</div> -->
 											</div>
 											<div class="form-group m-form__group row">
 												<div class="col-lg-6 controller">
