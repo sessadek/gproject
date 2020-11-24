@@ -83,12 +83,12 @@
 												</div>
 											</div>
 											<div class="form-group m-form__group row">
-												<div class="col-lg-6 controller">
+												<!-- <div class="col-lg-6 controller">
 													<label>
 														Service:
 													</label>
 													<input type="text" name="service" class="form-control m-input" placeholder="Service..." <?php if(isset($user['service'])){ echo "value='".$user['service']."'";} ?>>
-												</div>
+												</div> -->
 												<div class="col-lg-6 controller">
 													<label class="">
 														Rôle:

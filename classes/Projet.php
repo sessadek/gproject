@@ -24,8 +24,9 @@ class Projet
 
 	public function getprojetListe(){
 		global $conn;
-		$query = $conn->query("SELECT p.id_projet,p.nom_projet,p.description,s.raison_social, u.nom, u.prenom,(us.nom) as nom1, (us.prenom) as prenom1,t.libelle_type,i.libelle_paiment,p.date_debut,p.date_livraison from projets p join societes s on p.id_societe=s.id_societe join users u on p.id_responsable1=u.id_user join users us on p.id_responsable2=us.id_user join type_projet t on p.id_type=t.id_type join paiment i on p.etat_paiment=i.id_paiment ");
-    	$resultats = $query->fetchAll();
+		$query = $conn->query("SELECT p.id_projet,p.nom_projet,p.description,s.raison_social, u.nom, u.prenom,(us.nom) as nom1, (us.prenom) as prenom1,i.libelle_paiment,p.date_debut,p.date_livraison from projets p join societes s on p.id_societe=s.id_societe join users u on p.id_responsable1=u.id_user join users us on p.id_responsable2=us.id_user join paiment i on p.etat_paiment=i.id_paiment "); // join type_projet t on p.id_type=t.id_type
+		$resultats = $query->fetchAll();
+		// t.libelle_type,
     	return $resultats;
 	}
 

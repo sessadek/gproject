@@ -51,6 +51,21 @@
 																		</span>
 																	</div>
 																</div>
+
+																<div class="col-md-4">
+																	<div class="m-input-icon--left">
+																		<?php
+																			$etats = Etat::getetatlist();
+																		?>
+																		<select class="form-control m-input m-input--solid" name="" id="">
+																			<?php foreach($etats as $etat) : ?>
+																			<option value="<?= $etat['id_etat']?>"><?= $etat['libelle_etat']?></option>
+																			<?php endforeach ?>
+																		</select>
+																	</div>
+																</div>
+
+
 															</div>
 														</div>
 														<div class="col-xl-4 order-1 order-xl-2 m--align-right">

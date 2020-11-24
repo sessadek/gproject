@@ -25,10 +25,10 @@ class User
     	$resultats = $query->fetchAll();
     	return $resultats;
 	}
-	public function add($nom, $prenom, $email, $phone, $password, $id_role, $service){
+	public function add($nom, $prenom, $email, $phone, $password, $id_role){ // $service
 		global $conn;
-		$query = $conn->prepare("INSERT INTO users (nom, prenom, email, phone, password, id_role, service, deleted) 
-			VALUES (:nom, :prenom, :email, :phone, :password, :id_role, :service, 1)");
+		$query = $conn->prepare("INSERT INTO users (nom, prenom, email, phone, password, id_role, deleted) 
+			VALUES (:nom, :prenom, :email, :phone, :password, :id_role,  1)"); // service, :service,
 
 		$query->bindValue(':nom', $nom);
 		$query->bindValue(':prenom', $prenom);
@@ -36,16 +36,16 @@ class User
    		$query->bindValue(':phone', $phone);
     	$query->bindValue(':password', md5($password));
     	$query->bindValue(':id_role', $id_role);
-    	$query->bindValue(':service', $service);
+    	// $query->bindValue(':service', $service);
 
 		if($query->execute())
 			return true;
 		else
 			return false;
 	}
-	public function edit($id_user, $nom, $prenom, $email, $phone, $password, $id_role, $service){
+	public function edit($id_user, $nom, $prenom, $email, $phone, $password, $id_role){ // $service
 		global $conn;
-		$query = $conn->prepare("UPDATE users SET nom =(:nom), prenom =(:prenom), email =(:email), phone =(:phone), password =(:password), id_role =(:id_role), service =(:service) WHERE id_user = :id_user");
+		$query = $conn->prepare("UPDATE users SET nom =(:nom), prenom =(:prenom), email =(:email), phone =(:phone), password =(:password), id_role =(:id_role) WHERE id_user = :id_user"); // , service =(:service)
 		$query->bindValue(':id_user', $id_user);
 		$query->bindValue(':nom', $nom);
 		$query->bindValue(':prenom', $prenom);
@@ -53,7 +53,7 @@ class User
    		$query->bindValue(':phone', $phone);
     	$query->bindValue(':password', md5($password));
     	$query->bindValue(':id_role', $id_role);
-    	$query->bindValue(':service', $service);
+    	// $query->bindValue(':service', $service);
 		if ($query->execute())
 			return true;
 		else
@@ -88,7 +88,7 @@ class User
 	public function getlast()
 	{
 		global $conn;
-		$query = $conn->query("SELECT * FROM `users` ORDER BY `create_at` DESC LIMIT 5");
+		$query = $conn->query("SELECT * FROM `users` inner JOIN `role` on users.id_role = role.id_role ORDER BY users.create_at DESC LIMIT 5");
     	$resultats = $query->fetchall();
     	return $resultats;
 	}

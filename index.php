@@ -15,7 +15,6 @@
 						</div>
 					<!-- END: Subheader -->
 					<div class="m-content">
-
 							<div class="m-portlet ">
 										<div class="m-portlet__body  m-portlet__body--no-padding">
 											<div class="row m-row--no-padding m-row--col-separator-xl">
@@ -127,6 +126,85 @@
 											<div class="m-portlet__head-caption">
 												<div class="m-portlet__head-title">
 													<h3 class="m-portlet__head-text">
+														Statistique des projets réalise en 2019
+													</h3>
+												</div>
+											</div>
+										</div>
+										<div class="m-portlet__body">
+											<div class="m-widget2">
+												<div id="chart1"></div>
+											</div>
+										</div>
+									</div>	
+								</div>
+
+								<div class="col-xl-6">
+									<!--begin:: Widgets/Sale Reports-->
+									<div class="m-portlet m-portlet--full-height ">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-caption">
+												<div class="m-portlet__head-title">
+													<h3 class="m-portlet__head-text">
+														Statistique des projets réalise en 2020
+													</h3>
+												</div>
+											</div>
+										</div>
+										<div class="m-portlet__body">
+											<div class="m-widget2">
+												<div id="chart2"></div>
+											</div>
+										</div>
+									</div>	
+								</div>
+
+								<div class="col-xl-6">
+									<!--begin:: Widgets/Sale Reports-->
+									<div class="m-portlet m-portlet--full-height ">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-caption">
+												<div class="m-portlet__head-title">
+													<h3 class="m-portlet__head-text">
+														Statistiques des chiffres d'affaire
+													</h3>
+												</div>
+											</div>
+										</div>
+										<div class="m-portlet__body">
+											<div class="m-widget2">
+												<div id="chart3"></div>
+											</div>
+										</div>
+									</div>	
+								</div>
+
+								<div class="col-xl-6">
+									<!--begin:: Widgets/Sale Reports-->
+									<div class="m-portlet m-portlet--full-height ">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-caption">
+												<div class="m-portlet__head-title">
+													<h3 class="m-portlet__head-text">
+														Progression des projets
+													</h3>
+												</div>
+											</div>
+										</div>
+										<div class="m-portlet__body">
+											<div class="m-widget2">
+												<div id="chart4"></div>
+											</div>
+										</div>
+									</div>	
+								</div>
+								<div class="col-xl-6">
+									<!--begin:: Widgets/Sale Reports-->
+									<div class="m-portlet m-portlet--full-height ">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-caption">
+												<div class="m-portlet__head-title">
+													<h3 class="m-portlet__head-text">
 														Mon planing de réunions
 													</h3>
 												</div>
@@ -139,10 +217,10 @@
 												?>
 													<div class="m-widget2__item m-widget2__item--primary">
 														<div class="m-widget2__checkbox">
-															<label class="m-checkbox m-checkbox--solid m-checkbox--single m-checkbox--brand">
+															<!-- <label class="m-checkbox m-checkbox--solid m-checkbox--single m-checkbox--brand">
 																<input type="checkbox">
 																<span></span>
-															</label>
+															</label> -->
 														</div>
 														<div class="m-widget2__desc">
 															<span class="m-widget2__text">
@@ -162,6 +240,11 @@
 									</div>	
 									<!--end:: Widgets/Sale Reports-->
 								</div>
+
+
+								
+
+								
 
 								<div class="col-xl-6">
 									<!--begin:: Widgets/Tasks -->
@@ -199,6 +282,95 @@
 												</div>	
 											</div>
 										<?php } ?>
+										</div>
+									</div>
+									<!--end:: Widgets/Tasks -->
+								</div>
+
+								<div class="col-xl-6">
+									<!--begin:: Widgets/Tasks -->
+									<div class="m-portlet m-portlet--full-height ">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-caption">
+												<div class="m-portlet__head-title">
+													<h3 class="m-portlet__head-text">
+														Classement des societes par chiffre affaire
+													</h3>
+												</div>
+											</div>
+										</div>
+
+										<div class="m-portlet__body">
+											<div class="m-widget4">
+											
+											<?php 
+												$societes = Societe::gettop();
+
+												foreach ($societes as $societe) :
+													$raisonSocial = Societe::get($societe["id_societe"]);
+											?>
+													<div class="m-widget4__item">
+														<div class="m-widget4__img m-widget4__img--pic">
+																<img src="<?= Tools::getlogo(Tools::str2url($societe["raison_social"])); ?>" alt="">
+															</div>
+															<div class="m-widget4__info">
+																<span class="m-widget4__title">
+																	<?= $raisonSocial['raison_social']; ?>
+																</span>
+																<br>
+																<span class="m-widget4__sub">
+																	<?= $societe["sum"]; ?>MAD
+																</span>
+															</div>
+													</div>
+												<?php endforeach ?>
+											</div>
+										</div>
+									</div>
+									<!--end:: Widgets/Tasks -->
+								</div>
+
+								
+
+								<div class="col-xl-6">
+									<!--begin:: Widgets/Tasks -->
+									<div class="m-portlet m-portlet--full-height ">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-caption">
+												<div class="m-portlet__head-title">
+													<h3 class="m-portlet__head-text">
+														Nouveau Utilisateurs
+													</h3>
+												</div>
+											</div>
+										</div>
+										<div class="m-portlet__body">
+											<div class="m-widget4">
+											
+												<?php
+													$users = User::getlast();
+													foreach ($users as $user) :
+
+												?>
+													<div class="m-widget4__item">
+														<div class="m-widget4__img m-widget4__img--pic">
+															<img src="https://i.pravatar.cc/150?u=<?php echo $user['email']?>" alt="">
+
+														</div>
+														<div class="m-widget4__info">
+															<span class="m-widget4__title">
+																<?php echo $user['nom'] .' ' . $user['prenom']; ?>
+															</span>
+															<br>
+															<span class="m-widget4__sub">
+																<?= $user['libelle_rolle']; ?>
+															</span>
+															
+														</div>
+														<a class="reset_link" href="/pages/adduser.php?id_user=<?= $user['id_user']; ?>"><i class="flaticon-edit-1"></i></a>
+													</div>
+												<?php endforeach ?>
+											</div>
 										</div>
 									</div>
 									<!--end:: Widgets/Tasks -->
@@ -293,6 +465,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<!-- end:: Body -->
 				<?php require("footer.php"); ?>
 				</div>
@@ -311,7 +484,6 @@
 				<!--end::Page Snippets -->
 				<!--CHART -->
 				
-				<script src="//www.gstatic.com/charts/loader.js" type="text/javascript"></script>
 				<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 				<!--end::Page Vendors -->
 				<script type="text/javascript">
