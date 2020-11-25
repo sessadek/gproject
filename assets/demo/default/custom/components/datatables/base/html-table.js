@@ -48,11 +48,6 @@ var DatatableHtmlTableDemo = function() {
         }
       }
     });
-
-    
-
-
-    
   };
 
   return {

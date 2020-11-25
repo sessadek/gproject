@@ -15,6 +15,7 @@
 						</div>
 					<!-- END: Subheader -->
 					<div class="m-content">
+						<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
 							<div class="m-portlet ">
 										<div class="m-portlet__body  m-portlet__body--no-padding">
 											<div class="row m-row--no-padding m-row--col-separator-xl">
@@ -117,87 +118,96 @@
 											</div>
 										</div>
 							</div>
+						<?php endif ?>
 
 							<div class="row">
-								<div class="col-xl-6">
-									<!--begin:: Widgets/Sale Reports-->
-									<div class="m-portlet m-portlet--full-height ">
-										<div class="m-portlet__head">
-											<div class="m-portlet__head-caption">
-												<div class="m-portlet__head-title">
-													<h3 class="m-portlet__head-text">
-														Statistique des projets réalise en 2019
-													</h3>
-												</div>
-											</div>
-										</div>
-										<div class="m-portlet__body">
-											<div class="m-widget2">
-												<div id="chart1"></div>
-											</div>
-										</div>
-									</div>	
-								</div>
 
-								<div class="col-xl-6">
-									<!--begin:: Widgets/Sale Reports-->
-									<div class="m-portlet m-portlet--full-height ">
-										<div class="m-portlet__head">
-											<div class="m-portlet__head-caption">
-												<div class="m-portlet__head-title">
-													<h3 class="m-portlet__head-text">
-														Statistique des projets réalise en 2020
-													</h3>
+								<!-- <?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+									<div class="col-xl-6">
+										<div class="m-portlet m-portlet--full-height ">
+											<div class="m-portlet__head">
+												<div class="m-portlet__head-caption">
+													<div class="m-portlet__head-title">
+														<h3 class="m-portlet__head-text">
+															Statistique des projets réalise en 2019
+														</h3>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="m-portlet__body">
-											<div class="m-widget2">
-												<div id="chart2"></div>
+											<div class="m-portlet__body">
+												<div class="m-widget2">
+													<div id="chart1"></div>
+												</div>
 											</div>
-										</div>
-									</div>	
-								</div>
+										</div>	
+									</div>
+								<?php endif ?>
 
-								<div class="col-xl-6">
-									<!--begin:: Widgets/Sale Reports-->
-									<div class="m-portlet m-portlet--full-height ">
-										<div class="m-portlet__head">
-											<div class="m-portlet__head-caption">
-												<div class="m-portlet__head-title">
-													<h3 class="m-portlet__head-text">
-														Statistiques des chiffres d'affaire
-													</h3>
+								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+									<div class="col-xl-6">
+										<div class="m-portlet m-portlet--full-height ">
+											<div class="m-portlet__head">
+												<div class="m-portlet__head-caption">
+													<div class="m-portlet__head-title">
+														<h3 class="m-portlet__head-text">
+															Statistique des projets réalise en 2020
+														</h3>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="m-portlet__body">
-											<div class="m-widget2">
-												<div id="chart3"></div>
+											<div class="m-portlet__body">
+												<div class="m-widget2">
+													<div id="chart2"></div>
+												</div>
 											</div>
-										</div>
-									</div>	
-								</div>
+										</div>	
+									</div>
+								<?php endif ?>-->
 
-								<div class="col-xl-6">
-									<!--begin:: Widgets/Sale Reports-->
-									<div class="m-portlet m-portlet--full-height ">
-										<div class="m-portlet__head">
-											<div class="m-portlet__head-caption">
-												<div class="m-portlet__head-title">
-													<h3 class="m-portlet__head-text">
-														Progression des projets
-													</h3>
+								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+									<div class="col-xl-6">
+										<!--begin:: Widgets/Sale Reports-->
+										<div class="m-portlet m-portlet--full-height ">
+											<div class="m-portlet__head">
+												<div class="m-portlet__head-caption">
+													<div class="m-portlet__head-title">
+														<h3 class="m-portlet__head-text">
+															Statistiques des chiffres d'affaire
+														</h3>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="m-portlet__body">
-											<div class="m-widget2">
-												<div id="chart4"></div>
+											<div class="m-portlet__body">
+												<div class="m-widget2">
+													<div id="chart3"></div>
+												</div>
 											</div>
-										</div>
-									</div>	
-								</div>
+										</div>	
+									</div>
+								<?php endif ?>
+
+								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+									<div class="col-xl-6">
+										<!--begin:: Widgets/Sale Reports-->
+										<div class="m-portlet m-portlet--full-height ">
+											<div class="m-portlet__head">
+												<div class="m-portlet__head-caption">
+													<div class="m-portlet__head-title">
+														<h3 class="m-portlet__head-text">
+															Progression des projets
+														</h3>
+													</div>
+												</div>
+											</div>
+											<div class="m-portlet__body">
+												<div class="m-widget2">
+													<div id="chart4"></div>
+												</div>
+											</div>
+										</div>	
+									</div>
+								<?php endif ?>
+
 								<div class="col-xl-6">
 									<!--begin:: Widgets/Sale Reports-->
 									<div class="m-portlet m-portlet--full-height ">
@@ -287,6 +297,8 @@
 									<!--end:: Widgets/Tasks -->
 								</div>
 
+								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+
 								<div class="col-xl-6">
 									<!--begin:: Widgets/Tasks -->
 									<div class="m-portlet m-portlet--full-height ">
@@ -329,6 +341,7 @@
 									</div>
 									<!--end:: Widgets/Tasks -->
 								</div>
+								<?php endif ?>
 
 								
 
@@ -367,7 +380,9 @@
 															</span>
 															
 														</div>
-														<a class="reset_link" href="/pages/adduser.php?id_user=<?= $user['id_user']; ?>"><i class="flaticon-edit-1"></i></a>
+														<?php if ($_SESSION['level'] == 1): ?>
+															<a class="reset_link" href="/pages/adduser.php?id_user=<?= $user['id_user']; ?>"><i class="flaticon-edit-1"></i></a>
+														<?php endif ?>
 													</div>
 												<?php endforeach ?>
 											</div>
@@ -379,89 +394,89 @@
 
 							</div>
 
-						
-
-							<div class="row">
-								<div class="col-xl-12">
-									<!--begin:: Widgets/User Progress -->
-									<div class="m-portlet m-portlet--full-height ">
-										<div class="m-portlet__head">
-											<div class="m-portlet__head-caption">
-												<div class="m-portlet__head-title">
-													<h3 class="m-portlet__head-text">
-														Progression des projets en cours
-													</h3>
-												</div>
-											</div>
-										</div>
-										<div class="m-portlet__body">
-											<div class="tab-content">
-												<div class="tab-pane active" id="m_widget4_tab1_content">
-													<div class="m-widget4 m-widget4--progress">
-														<?php 
-															$projets = Projet::getProjetByEtat(2);
-															foreach ($projets as $key => $projet) {
-																$soc=Societe::get($projet["id_societe"]);
-																$sec=Secteur::getByID($soc["id_secteur"]);
-																$pro=Livrable::getProgras($projet["id_projet"]);
-																$sum=Livrable::getSum($projet["id_projet"],2);
-														 ?>
-														<div class="m-widget4__item">
-															<div class="m-widget4__img m-widget4__img--pic">
-																<img src="<?= Tools::getlogo(Tools::str2url($soc["raison_social"])); ?>" alt="">
-															</div>
-															<div class="m-widget4__info">
-																<span class="m-widget4__title">
-																	<?php echo $projet['nom_projet']; ?>
-																</span>
-																<br>
-																<span class="m-widget4__sub">
-																	<?php echo $sec["libelle_secteur"] ?>
-																</span>
-															</div>
-															<div class="m-widget4__progress">
-																<div class="m-widget4__progress-wrapper">
-																	<span class="m-widget17__progress-number">
-																		<?php echo round($pro[0],0); ?> %
-																	</span>
-																	<div class="progress m-progress--sm">
-																		<div class="progress-bar m--bg-accent" role="progressbar" style="width: <?php echo round($pro[0],0); ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</div>
-																<div class="m-widget24__item">
-																	<div class="row">
-																		<div class="col-md-4">
-																			<span class="m-widget24__stats m--font-info">
-																				Total: <br><?php echo $k = Projet::getM($projet['montant']); ?> MAD
-																			</span>
-																		</div>
-																		<div class="col-md-4">
-																			<span class="m-widget24__stats m--font-accent">
-																				Payée: <br><?php echo $k = Projet::getM($projet['montant']-$sum[0]); ?> MAD
-																			</span>
-																		</div>
-																		<div class="col-md-4">
-																			<span class="m-widget24__stats m--font-danger">
-																				Le reste: <br><?php echo $k = Projet::getM($sum[0]); ?> MAD
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div>
-															</div>
-														</div>
-														<?php } ?>
+							<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+								<div class="row">
+									<div class="col-xl-12">
+										<!--begin:: Widgets/User Progress -->
+										<div class="m-portlet m-portlet--full-height ">
+											<div class="m-portlet__head">
+												<div class="m-portlet__head-caption">
+													<div class="m-portlet__head-title">
+														<h3 class="m-portlet__head-text">
+															Progression des projets en cours
+														</h3>
 													</div>
 												</div>
-												<div class="tab-pane" id="m_widget4_tab2_content"></div>
-												<div class="tab-pane" id="m_widget4_tab3_content"></div>
+											</div>
+											<div class="m-portlet__body">
+												<div class="tab-content">
+													<div class="tab-pane active" id="m_widget4_tab1_content">
+														<div class="m-widget4 m-widget4--progress">
+															<?php 
+																$projets = Projet::getProjetByEtat(2);
+																foreach ($projets as $key => $projet) {
+																	$soc=Societe::get($projet["id_societe"]);
+																	$sec=Secteur::getByID($soc["id_secteur"]);
+																	$pro=Livrable::getProgras($projet["id_projet"]);
+																	$sum=Livrable::getSum($projet["id_projet"],2);
+															?>
+															<div class="m-widget4__item">
+																<div class="m-widget4__img m-widget4__img--pic">
+																	<img src="<?= Tools::getlogo(Tools::str2url($soc["raison_social"])); ?>" alt="">
+																</div>
+																<div class="m-widget4__info">
+																	<span class="m-widget4__title">
+																		<?php echo $projet['nom_projet']; ?>
+																	</span>
+																	<br>
+																	<span class="m-widget4__sub">
+																		<?php echo $sec["libelle_secteur"] ?>
+																	</span>
+																</div>
+																<div class="m-widget4__progress">
+																	<div class="m-widget4__progress-wrapper">
+																		<span class="m-widget17__progress-number">
+																			<?php echo round($pro[0],0); ?> %
+																		</span>
+																		<div class="progress m-progress--sm">
+																			<div class="progress-bar m--bg-accent" role="progressbar" style="width: <?php echo round($pro[0],0); ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+																		</div>
+																	</div>
+																	<div class="m-widget24__item">
+																		<div class="row">
+																			<div class="col-md-4">
+																				<span class="m-widget24__stats m--font-info">
+																					Total: <br><?php echo $k = Projet::getM($projet['montant']); ?> MAD
+																				</span>
+																			</div>
+																			<div class="col-md-4">
+																				<span class="m-widget24__stats m--font-accent">
+																					Payée: <br><?php echo $k = Projet::getM($projet['montant']-$sum[0]); ?> MAD
+																				</span>
+																			</div>
+																			<div class="col-md-4">
+																				<span class="m-widget24__stats m--font-danger">
+																					Le reste: <br><?php echo $k = Projet::getM($sum[0]); ?> MAD
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div>
+																</div>
+															</div>
+															<?php } ?>
+														</div>
+													</div>
+													<div class="tab-pane" id="m_widget4_tab2_content"></div>
+													<div class="tab-pane" id="m_widget4_tab3_content"></div>
+												</div>
 											</div>
 										</div>
+										<!--end:: Widgets/User Progress -->
 									</div>
-									<!--end:: Widgets/User Progress -->
 								</div>
-							</div>
+							<?php endif ?>
 						</div>
 					</div>
 				</div>
@@ -492,6 +507,10 @@
 
 				      function drawChart() {
 
+						// chart 1
+
+						<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+
 				      	<?php 
         					  $typeps= Projet::getPBYType(date("Y")-1);?>
 
@@ -511,8 +530,8 @@
 				        var options = {
 				          title: ''
 				        };
-				        var chart = new google.visualization.PieChart(document.getElementById('chart1'));
-				        chart.draw(data, options);
+				        // var chart = new google.visualization.PieChart(document.getElementById('chart1'));
+						// chart.draw(data, options);
 				        
 				        /*chart 2*/
 
@@ -535,8 +554,8 @@
 				        var options = {
 				          title: ''
 				        };
-				        var chart = new google.visualization.PieChart(document.getElementById('chart2'));
-				        chart.draw(data, options);
+				        // var chart = new google.visualization.PieChart(document.getElementById('chart2'));
+				        // chart.draw(data, options);
 
 				        /* Chart 3*/
 				        		 <?php $years = Projet::getYear(); ?>
@@ -588,7 +607,8 @@
 				          
 				        };
 				        var chart = new google.visualization.PieChart(document.getElementById('chart4'));
-				        chart.draw(data, options);
+						chart.draw(data, options);
+						<?php endif ?>
 
 				      }
 				</script>

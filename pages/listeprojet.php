@@ -61,7 +61,7 @@
 
 																		<select class="form-control m-input m-input--solid" name="" id="search_by_etat">
 																			<?php foreach($etats as $etat) : ?>
-																				<option value="<?= $etat['id_etat']?>"><?= $etat['libelle_etat']?></option>
+																				<option value="<?= $etat['libelle_etat']?>"><?= $etat['libelle_etat']?></option>
 																			<?php endforeach ?>
 																		</select>
 																	</div>
