@@ -142,7 +142,8 @@ if (isset($_POST)) {
 					$upload_folder = __DIR__."/uploads/tmp/";
 					if (move_uploaded_file($_FILES['csvbacklog']['tmp_name'], $upload_folder. $fname)) {
 				    		//here
-				    		$file = $upload_folder. $fname;
+							$file = $upload_folder. $fname;
+							
 							if ( $xlsx = SimpleXLSX::parse($file) ) {
 								$lines = $xlsx->rows();
 							}
@@ -153,6 +154,7 @@ if (isset($_POST)) {
 								}
 							}
 						unlink($upload_folder. $fname);
+						header('Location: pages/addprojet.php?id_projet=' . $_POST['id_projet']);
 					} else {
 					   //error
 					}

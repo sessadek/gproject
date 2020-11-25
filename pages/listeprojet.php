@@ -54,12 +54,14 @@
 
 																<div class="col-md-4">
 																	<div class="m-input-icon--left">
-																		<?php
+
+																		<?php 
 																			$etats = Etat::getetatlist();
 																		?>
-																		<select class="form-control m-input m-input--solid" name="" id="">
+
+																		<select class="form-control m-input m-input--solid" name="" id="search_by_etat">
 																			<?php foreach($etats as $etat) : ?>
-																			<option value="<?= $etat['id_etat']?>"><?= $etat['libelle_etat']?></option>
+																				<option value="<?= $etat['id_etat']?>"><?= $etat['libelle_etat']?></option>
 																			<?php endforeach ?>
 																		</select>
 																	</div>
@@ -107,6 +109,9 @@
 															<th title="Etat de paiement">
 																Etat de paiement
 															</th>
+															<th title="Etat de projet">
+																Etat de projet
+															</th>
 															<th title="Date du début du projet">
 																Date du début du projet
 															</th>
@@ -130,8 +135,8 @@
 													    			<td>".$resultat['raison_social']."</td>
 													    			<td>".$resultat['nom']."".$espace."".$resultat['prenom']."</td>
 													    			<td>".$resultat['nom1']."".$espace."".$resultat['prenom1']."</td>
-													    			
-													    			<td>".$resultat['libelle_paiment']."</td>
+																	<td>".$resultat['libelle_paiment']."</td>
+																	<td>".$resultat['libelle_etat']."</td>
 													    			<td>".$resultat['date_debut']."</td>
 													    			<td>".$resultat['date_livraison']."</td>
 													    				<td>

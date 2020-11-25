@@ -5,6 +5,7 @@ var DatatableHtmlTableDemo = function() {
 
   // demo initializer
   var demo = function() {
+    
 
     var datatable = $('.m-datatable').mDatatable({
       data: {
@@ -45,8 +46,13 @@ var DatatableHtmlTableDemo = function() {
                 }
             }
         }
-    }
+      }
     });
+
+    
+
+
+    
   };
 
   return {
