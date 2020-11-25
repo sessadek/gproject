@@ -1,4 +1,4 @@
-<?php require("header.php"); ?>
+		<?php require("header.php"); ?>
 				<!-- begin::Body -->
 				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
 					<?php require("sidebar.php"); ?>
@@ -163,7 +163,7 @@
 										</div>	
 									</div>
 								<?php endif ?>-->
-								
+
 								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
 									<div class="col-xl-6">
 										<!--begin:: Widgets/Sale Reports-->
@@ -297,300 +297,99 @@
 									<!--end:: Widgets/Tasks -->
 								</div>
 
+								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
 
 								<div class="col-xl-6">
-									<!--begin:: Widgets/New Users-->
+									<!--begin:: Widgets/Tasks -->
 									<div class="m-portlet m-portlet--full-height ">
 										<div class="m-portlet__head">
 											<div class="m-portlet__head-caption">
 												<div class="m-portlet__head-title">
 													<h3 class="m-portlet__head-text">
-														Nouveau utilisateurs
+														Classement des societes par chiffre affaire
 													</h3>
 												</div>
 											</div>
 										</div>
+
 										<div class="m-portlet__body">
-											<div class="tab-content">
-												<div class="tab-pane active" id="m_widget4_tab1_content">
-													<!--begin::Widget 14-->
-													<div class="m-widget4">
-														<!--begin::Widget 14 Item-->
-													  <?php $users = User::getlast();
-															foreach ($users as $user) {  ?>
-														<div class="m-widget4__item">
-															<div class="m-widget4__img m-widget4__img--pic">
-																<img src="<?=_SITE_URL_; ?>uploads/avatars/<?php echo rand(1, 6); ?>.png" alt="">
+											<div class="m-widget4">
+											
+											<?php 
+												$societes = Societe::gettop();
+
+												foreach ($societes as $societe) :
+													$raisonSocial = Societe::get($societe["id_societe"]);
+											?>
+													<div class="m-widget4__item">
+														<div class="m-widget4__img m-widget4__img--pic">
+																<img src="<?= Tools::getlogo(Tools::str2url($societe["raison_social"])); ?>" alt="">
 															</div>
 															<div class="m-widget4__info">
 																<span class="m-widget4__title">
-																	<?php echo $user['nom'].' '.$user['prenom'] ?>
+																	<?= $raisonSocial['raison_social']; ?>
 																</span>
 																<br>
 																<span class="m-widget4__sub">
-																	<?= $user['libelle_rolle']; ?>
+																	<?= $societe["sum"]; ?>MAD
 																</span>
 															</div>
-
-															<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
-																<div class="m-widget4__ext">
-																	<?php echo"<a class='reset_link' href='/pages/adduser.php?id_user=".$user['id_user']."'><i class='flaticon-edit-1'></i></a>"?>
-																</div>
-															<?php endif ?>
-														</div>
-														<?php } ?>
-														<!--end::Widget 14 Item--> 
 													</div>
-													<!--end::Widget 14-->
-												</div>
+												<?php endforeach ?>
 											</div>
 										</div>
 									</div>
-									<!--end:: Widgets/New Users-->
+									<!--end:: Widgets/Tasks -->
 								</div>
+								<?php endif ?>
 
-								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+								
 
 								<div class="col-xl-6">
-									<!--begin:: Widgets/Last Updates-->
+									<!--begin:: Widgets/Tasks -->
 									<div class="m-portlet m-portlet--full-height ">
 										<div class="m-portlet__head">
 											<div class="m-portlet__head-caption">
 												<div class="m-portlet__head-title">
 													<h3 class="m-portlet__head-text">
-														Options générales
-													</h3>
-												</div>
-											</div>
-										</div>
-										<div class="m-portlet__body">
-											<!--begin::widget 12-->
-											<div class="m-widget4">
-												<div class="m-widget4__item">
-													<div class="m-widget4__ext">
-														<span class="m-widget4__icon m--font-brand">
-															<i class="flaticon-interface-3"></i>
-														</span>
-													</div>
-													<div class="m-widget4__info">
-														<span class="m-widget4__text">
-															Rôles
-														</span>
-													</div>
-													<div class="m-widget4__ext">
-														<span class="m-widget4__number m--font-info">
-															<?php echo $max= Role::getmax(); ?>
-														</span>
-													</div>
-												</div>
-												<div class="m-widget4__item">
-													<div class="m-widget4__ext">
-														<span class="m-widget4__icon m--font-brand">
-															<i class="flaticon-line-graph"></i>
-														</span>
-													</div>
-													<div class="m-widget4__info">
-														<span class="m-widget4__text">
-															Type des projets
-														</span>
-													</div>
-													<div class="m-widget4__ext">
-														<span class="m-widget4__number m--font-info">
-															<?php echo $max= Type::getmax(); ?>
-														</span>
-													</div>
-												</div>
-												<div class="m-widget4__item">
-													<div class="m-widget4__ext">
-														<span class="m-widget4__icon m--font-brand">
-															<i class="flaticon-diagram"></i>
-														</span>
-													</div>
-													<div class="m-widget4__info">
-														<span class="m-widget4__text">
-															Etat de paiement
-														</span>
-													</div>
-													<div class="m-widget4__ext">
-														<span class="m-widget4__number m--font-info">
-															<?php echo $max= Paiment::getmax(); ?>
-														</span>
-													</div>
-												</div>
-												<div class="m-widget4__item m-widget4__item-border">
-													<div class="m-widget4__ext">
-														<span class="m-widget4__icon m--font-brand">
-															<i class="flaticon-list-3"></i>
-														</span>
-													</div>
-													<div class="m-widget4__info">
-														<span class="m-widget4__text">
-															Etat des projets
-														</span>
-													</div>
-													<div class="m-widget4__ext">
-														<span class="m-widget4__number m--font-info">
-															<?php echo $max= Etat::getmax(); ?>
-														</span>
-													</div>
-												</div>
-												<div class="m-widget4__item m-widget4__item-border">
-													<div class="m-widget4__ext">
-														<span class="m-widget4__icon m--font-brand">
-															<i class="flaticon-users"></i>
-														</span>
-													</div>
-													<div class="m-widget4__info">
-														<span class="m-widget4__text">
-															Utilisateurs
-														</span>
-													</div>
-													<div class="m-widget4__ext">
-														<span class="m-widget4__number m--font-info">
-															<?php echo $max= User::getmax(); ?>
-														</span>
-													</div>
-												</div>
-												<div class="m-widget4__item m-widget4__item-border">
-													<div class="m-widget4__ext">
-														<span class="m-widget4__icon m--font-brand">
-															<i class="flaticon-network"></i>
-														</span>
-													</div>
-													<div class="m-widget4__info">
-														<span class="m-widget4__text">
-															Projets
-														</span>
-													</div>
-													<div class="m-widget4__ext">
-														<span class="m-widget4__number m--font-info">
-															<?php echo $max= Projet::getmax(); ?>
-														</span>
-													</div>
-												</div>
-											</div>
-											<!--end::Widget 12-->
-										</div>
-									</div>
-									<!--end:: Widgets/Last Updates-->
-								</div>
-
-								<?php endif ?>
-								
-
-								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
-								<div class="col-xl-6">
-									<!--begin:: Widgets/Authors Profit-->
-									<div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
-										<div class="m-portlet__head">
-											<div class="m-portlet__head-caption">
-												<div class="m-portlet__head-title">
-													<h3 class="m-portlet__head-text">
-														Classement des société par chiffres d'affaire total
+														Nouveau Utilisateurs
 													</h3>
 												</div>
 											</div>
 										</div>
 										<div class="m-portlet__body">
 											<div class="m-widget4">
-											<?php $societes = Societe::gettop();
-											 foreach ($societes as $key => $societe)
-												{   
-													$soc=Societe::get($societe["id_societe"]);
-													$sec=Secteur::getByID($soc["id_secteur"]);
-													?>
 											
-												<div class="m-widget4__item">
-													<div class="m-widget4__img m-widget4__img--logo">
-														<img src="<?= Tools::getlogo(Tools::str2url($soc["raison_social"])); ?>" alt="">
+												<?php
+													$users = User::getlast();
+													foreach ($users as $user) :
+
+												?>
+													<div class="m-widget4__item">
+														<div class="m-widget4__img m-widget4__img--pic">
+															<img src="https://i.pravatar.cc/150?u=<?php echo $user['email']?>" alt="">
+
+														</div>
+														<div class="m-widget4__info">
+															<span class="m-widget4__title">
+																<?php echo $user['nom'] .' ' . $user['prenom']; ?>
+															</span>
+															<br>
+															<span class="m-widget4__sub">
+																<?= $user['libelle_rolle']; ?>
+															</span>
+															
+														</div>
+														<?php if ($_SESSION['level'] == 1): ?>
+															<a class="reset_link" href="/pages/adduser.php?id_user=<?= $user['id_user']; ?>"><i class="flaticon-edit-1"></i></a>
+														<?php endif ?>
 													</div>
-													<div class="m-widget4__info">
-														<span class="m-widget4__title">
-															<?php echo $soc["raison_social"] ?>
-														</span>
-													</div>
-													<span class="m-widget4__ext">
-														<span class="m-widget4__number m--font-brand">
-															<?php $k = Projet::getM($societe[1]);
-																	echo $k;?>MAD 
-														</span>
-													</span>
-												</div>
-											<?php } ?>
+												<?php endforeach ?>
 											</div>
 										</div>
 									</div>
-									<!--end:: Widgets/Authors Profit-->
+									<!--end:: Widgets/Tasks -->
 								</div>
-
-								<?php endif ?>
-
-								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
-								<div class="col-xl-6">
-										<!--begin:: Widgets/Product Sales-->
-										<div class="m-portlet m-portlet--bordered-semi m-portlet--space m-portlet--full-height ">
-											<div class="m-portlet__head">
-												<div class="m-portlet__head-caption">
-													<div class="m-portlet__head-title">
-														<h3 class="m-portlet__head-text">
-															Chiffres d'affaire des projets
-														</h3>
-													</div>
-												</div>
-											</div>
-											<div class="m-portlet__body">
-												<div class="m-widget25">
-													<span class="m-widget25__price m--font-brand">
-															<?php 
-																$sum = Projet::getSomme();
-																$k = Projet::getM($sum);
-															  	echo $k;
-													         ?> MAD
-													</span>
-													<div class="m-widget25--progress">
-														<div class="m-widget25__progress">
-															<span class="m-widget25__progress-number">
-																<?php echo round($p1,2); ?>%
-															</span>
-															<div class="m--space-10"></div>
-															<div class="progress m-progress--sm">
-																<div class="progress-bar m--bg-danger" role="progressbar" style="width: <?php echo round($p1,2); ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-															</div>
-															<span class="m-widget25__progress-sub">
-																En instance
-															</span>
-														</div>
-														<div class="m-widget25__progress">
-															<span class="m-widget25__progress-number">
-																<?php echo round($p2,2); ?>%
-															</span>
-															<div class="m--space-10"></div>
-															<div class="progress m-progress--sm">
-																<div class="progress-bar m--bg-accent" role="progressbar" style="width: <?php echo round($p2,2); ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-															</div>
-															<span class="m-widget25__progress-sub">
-																En cours
-															</span>
-														</div>
-														<div class="m-widget25__progress">
-															<span class="m-widget25__progress-number">
-																<?php echo round($p3,2); ?>%
-															</span>
-															<div class="m--space-10"></div>
-															<div class="progress m-progress--sm">
-																<div class="progress-bar m--bg-warning" role="progressbar" style="width: <?php echo round($p3,2); ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-															</div>
-															<span class="m-widget25__progress-sub">
-																Livré
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!--end:: Widgets/Product Sales-->
-								</div>
-								<?php endif ?>
 
 
 							</div>

@@ -89,9 +89,9 @@
 															<th title="Field #6">
 																Rôle
 															</th>
-															<th title="Field #7">
+															<!-- <th title="Field #7">
 																Service
-															</th>
+															</th> -->
 															<th title="Field #7">
 																Date d'ajout
 															</th>
@@ -110,7 +110,6 @@
 													    			<td>".$resultat['email']."</td>
 													    			<td>".$resultat['phone']."</td>
 													    			<td>".$resultat['libelle_rolle']."</td>
-													    			<td>".$resultat['service']."</td>
 													    			<td>".$resultat['date_add']."</td>
 													    			<td>
 													    				<div class='row'>

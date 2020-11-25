@@ -24,7 +24,7 @@
 			</h4>
 			<i class="m-menu__section-icon flaticon-more-v3"></i>
 		</li>
-		<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+		<?php if ($_SESSION['level'] == 1): ?>
 		<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 			<a  href="#" class="m-menu__link m-menu__toggle">
 				<i class="m-menu__link-icon flaticon-users"></i>
@@ -60,7 +60,7 @@
 			</div>
 		</li>
 		<?php endif ?>
-		<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2 || $_SESSION['level'] == 3): ?>
+		<?php if ($_SESSION['level'] == 1): ?>
 		<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 			<a  href="#" class="m-menu__link m-menu__toggle">
 				<i class="m-menu__link-icon flaticon-suitcase"></i>
@@ -96,7 +96,7 @@
 			</div>
 		</li>
 		<?php endif ?>
-		<?php if ($_SESSION['level'] == 1  || $_SESSION['level'] == 2 || $_SESSION['level'] == 3): ?>
+		<?php if ($_SESSION['level'] == 1  || $_SESSION['level'] == 2): ?>
 		<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 			<a  href="#" class="m-menu__link m-menu__toggle">
 				<i class="m-menu__link-icon flaticon-tabs"></i>
@@ -132,7 +132,7 @@
 			</div>
 		</li>
 		<?php endif ?>
-		<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+		<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2 || $_SESSION['level'] == 3): ?>
 		<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 			<a  href="/pages/addbacklog.php" class="m-menu__link m-menu__toggle">
 				<i class="m-menu__link-icon flaticon-list-1"></i>
@@ -192,7 +192,7 @@
 			</a>
 		</li> 
 		<?php endif ?>
-		<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+		<?php if ($_SESSION['level'] == 1): ?>
 		<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 			<a  href="/pages/addetat.php" class="m-menu__link m-menu__toggle">
 				<i class="m-menu__link-icon flaticon-interface-5"></i>
@@ -202,7 +202,7 @@
 			</a>
 		</li>
 		<?php endif ?>
-		<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2 || $_SESSION['level'] == 3): ?>
+		<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
 		<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 			<a  href="/pages/monplanning.php" class="m-menu__link m-menu__toggle">
 				<i class="m-menu__link-icon flaticon-calendar"></i>
