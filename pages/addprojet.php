@@ -109,11 +109,7 @@
 														?>
 												</select>
 											</div>
-											
-											
 										</div>
-
-										
 										<div class="form-group m-form__group row">
 											<!-- <div class="col-lg-6 controller">
 												<label class="">
@@ -496,6 +492,9 @@
 							</div>
 
 							<?php if (isset($_GET['id_projet']) && !empty($_GET['id_projet'])): ?>
+
+							<?php require('team.php') ?>
+
 							<div class="m-portlet">
 								<div class="m-portlet__head">
 									<div class="row">

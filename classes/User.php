@@ -92,5 +92,18 @@ class User
     	$resultats = $query->fetchall();
     	return $resultats;
 	}
+
+	public function getProjetsUser() {
+		global $conn;
+		$query = $conn->query("SELECT users.nom, users.prenom, user_id, projet_id, COUNT(*) as count 
+								FROM projet_user
+								INNER JOIN users
+								ON users.id_user = projet_user.user_id
+								GROUP BY user_id 
+								ORDER BY count
+								DESC LIMIT 5");
+		$resultats = $query->fetchall();
+    	return $resultats;
+	}
 }
 ?>

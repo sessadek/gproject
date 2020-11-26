@@ -3,6 +3,24 @@ require('require.php');
 //INSERT AND EDIT
 if (isset($_POST)) {
 	switch ($_POST['action']) {
+		case 'team':
+			switch ($_POST['traitement']) {
+				case 'add':
+					// var_dump(count($_POST['users']));
+					if($_POST['users']) {
+						foreach($_POST['users'] as $user) {
+							Team::add($_POST['id_projet'], $user);
+						}
+						$confirm = "Equipe Ajouter";
+						header('Location: pages/addprojet.php?id_projet=' . $_POST['id_projet'] . '&confirm='.$confirm);
+						
+					} else {
+						$error = "Equipe non Ajouter";
+			    		header('Location: addprojet.php?error='.$error);
+					}
+					break;
+			}
+			break;
 		case 'user':
 			switch ($_POST['traitement']) {
 				case 'add':
@@ -298,6 +316,17 @@ if (isset($_POST)) {
 //DELETE
 if (isset($_GET)) {
 	switch ($_GET['action']) {
+		case 'team':
+			if($_GET['traitement'] == "delete") {
+		    	if(Team::delete($_GET['id'])) {
+		    		$confirm = "supprimé";
+		    		header('Location: pages/addprojet.php?id_projet=' . $_GET['id_projet'] . '&confirm='.$confirm);
+		    	} else {
+		    		$error = "non supprimé";
+		    		header('Location: pages/addprojet.php?id_projet=' . $_GET['id_projet'] . '?&error='.$error);
+		    	}
+			}
+			break;
 		case 'user':
 			if($_GET['traitement'] == "delete"){
 		    	if(User::delete($_GET['id'])){

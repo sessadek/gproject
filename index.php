@@ -1,3 +1,4 @@
+
 <?php require("header.php"); ?>
 				<!-- begin::Body -->
 				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
@@ -141,27 +142,6 @@
 											</div>
 										</div>	
 									</div>
-								<?php endif ?>
-
-								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
-									<div class="col-xl-6">
-										<div class="m-portlet m-portlet--full-height ">
-											<div class="m-portlet__head">
-												<div class="m-portlet__head-caption">
-													<div class="m-portlet__head-title">
-														<h3 class="m-portlet__head-text">
-															Statistique des projets réalise en 2020
-														</h3>
-													</div>
-												</div>
-											</div>
-											<div class="m-portlet__body">
-												<div class="m-widget2">
-													<div id="chart2"></div>
-												</div>
-											</div>
-										</div>	
-									</div>
 								<?php endif ?>-->
 								
 								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
@@ -296,6 +276,51 @@
 									</div>
 									<!--end:: Widgets/Tasks -->
 								</div>
+
+
+								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
+									<div class="col-xl-6">
+										<div class="m-portlet m-portlet--full-height ">
+											<div class="m-portlet__head">
+												<div class="m-portlet__head-caption">
+													<div class="m-portlet__head-title">
+														<h3 class="m-portlet__head-text">
+															Les top developpeur
+														</h3>
+													</div>
+												</div>
+											</div>
+											<div class="m-portlet__body">
+												<div class="tab-content">
+													<div class="tab-pane active" id="m_widget4_tab1_content">
+														<!--begin::Widget 14-->
+														<div class="m-widget4">
+															<!--begin::Widget 14 Item-->
+														<?php $users = User::getProjetsUser();
+																foreach ($users as $user) :  ?>
+															<div class="m-widget4__item">
+																<div class="m-widget4__img m-widget4__img--pic">
+																	<img src="<?=_SITE_URL_; ?>uploads/avatars/<?php echo rand(1, 6); ?>.png" alt="">
+																</div>
+																<div class="m-widget4__info">
+																	<span class="m-widget4__title">
+																		<?php echo $user['nom'].' '.$user['prenom'] ?>
+																	</span>
+																</div>
+																<div class="m-widget4__ext">
+																	<span class="m-widget4__number m--font-info"><?= $user['count']; ?></span>
+																</div>
+															</div>
+															<?php endforeach ?>
+															<!--end::Widget 14 Item--> 
+														</div>
+														<!--end::Widget 14-->
+													</div>
+												</div>
+											</div>
+										</div>	
+									</div>
+								<?php endif ?>
 
 
 								<div class="col-xl-6">
@@ -524,6 +549,8 @@
 								</div>
 
 								<?php endif ?>
+
+								
 
 								<?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2): ?>
 								<div class="col-xl-6">

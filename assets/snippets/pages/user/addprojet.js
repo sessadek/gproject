@@ -25,6 +25,10 @@ $(document).ready(function() {
     $('#openformAdd').on('click', function (e) {
       $('#formAdd').modal("show");
     });
+
+    $('#team').on('click', function (e) {
+        $('#teammodal').modal("show");
+    });
     
     $('#importdocs').on('click', function (e) {
       $('#importdocsmodal').modal("show");
