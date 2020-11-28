@@ -141,6 +141,23 @@ class Projet
     	return $resultats;
 	}
 
+	public function getprojetByEtatJson($id_etat){
+		global $conn;
+		$query = $conn->prepare("SELECT p.id_projet,p.nom_projet,p.description,s.raison_social, u.nom, u.prenom,(us.nom) AS nom1, (us.prenom) AS prenom1,i.libelle_paiment,e.libelle_etat,p.date_debut,p.date_livraison 
+								FROM projets p 
+								JOIN societes s ON p.id_societe=s.id_societe 
+								JOIN users u ON p.id_responsable1=u.id_user 
+								JOIN users us ON p.id_responsable2=us.id_user 
+								JOIN paiment i ON p.etat_paiment=i.id_paiment 
+								JOIN etat_projet e ON p.etat_projet=e.id_etat
+								WHERE p.etat_projet = :id_etat");
+		$query->bindValue(':id_etat', $id_etat);
+		$query->execute();
+		$resultats = $query->fetchAll();
+		// t.libelle_type,
+    	return $resultats;
+	}
+
 	public function getM($s)
 	{
 		$n = (0+str_replace(",", "", $s));

@@ -61,7 +61,7 @@
 
 																		<select class="form-control m-input m-input--solid" name="" id="search_by_etat">
 																			<?php foreach($etats as $etat) : ?>
-																				<option value="<?= $etat['libelle_etat']?>"><?= $etat['libelle_etat']?></option>
+																				<option value="<?= $etat['id_etat']?>"><?= $etat['libelle_etat']?></option>
 																			<?php endforeach ?>
 																		</select>
 																	</div>
@@ -85,6 +85,7 @@
 												</div>
 												<!--end: Search Form -->
 												<!--begin: Datatable -->
+												<div id="datatable-container">
 												<table class="m-datatable" id="html_table" width="100%">
 													<thead>
 														<tr>
@@ -103,9 +104,6 @@
 															<th title="Adjoint">
 																Adjoint
 															</th>
-															<!-- <th title="Type du projet">
-																Type du projet
-															</th> -->
 															<th title="Etat de paiement">
 																Etat de paiement
 															</th>
@@ -157,6 +155,7 @@
 														?>
 													</tbody>
 												</table>
+												</div>
 												<!--end: Datatable -->
 											</div>
 										</div>
@@ -185,6 +184,116 @@
 				<!--end::Page Vendors -->  
 				<link rel="stylesheet" href="<?=_SITE_URL_; ?>assets/vendors/custom/rating/rating.css">
 				<script src="<?=_SITE_URL_; ?>assets/snippets/pages/user/rating.js"></script>
+				<script>
+					$(document).ready(function() {
+
+						$('#search_by_etat').on('change', function() {
+							var etat_projet = $(this).val();
+							var table = `<table class="m-datatable" id="html_table" width="100%">
+										<thead>
+											<tr>
+												<th title="ID">
+													ID
+												</th>
+												<th title="Nom du projet">
+													Nom du projet
+												</th>
+												<th title="Société">
+													Société
+												</th>
+												<th title="Responsable">
+													Responsable
+												</th>
+												<th title="Adjoint">
+													Adjoint
+												</th>
+												<th title="Etat de paiement">
+													Etat de paiement
+												</th>
+												<th title="Etat de projet">
+													Etat de projet
+												</th>
+												<th title="Date du début du projet">
+													Date du début du projet
+												</th>
+												<th title="Date de fin du projet">
+													Date de fin du projet
+												</th>
+												<th>
+												</th>
+											</tr>
+										</thead><tbody>`;
+							$.get( "../classes/ajax/projetByEtat_json.php?etat_projet=" + etat_projet, function( data ) {
+								var results = JSON.parse(data);
+								$.each(results, function( index, item ) {
+									table += '<tr><td>' + item.id_projet + '</td>';
+									table += '<td>' + item.nom_projet + '</td>';
+									table += '<td>' + item.raison_social + '</td>';
+									table += '<td>' + item.nom + ' ' + item.prenom + '</td>';
+									table += '<td>' + item.nom1 + ' ' + item.prenom1 +'</td>';
+									table += '<td>' + item.libelle_etat + '</td>';
+									table += '<td>' + item.libelle_paiment + '</td>';
+									table += '<td>' + item.date_debut + '</td>';
+									table += '<td>' + item.date_livraison + '</td>';
+									table += '<td><div class="row">';
+									table += '<div class="col-md-6"><a class="reset_link" href="/pages/addprojet.php?id_projet=' + item.id_projet + '"><i class="flaticon-edit-1"></i></a></div>';
+									table += '<div class="col-md-6"><a class="reset_link" href="../router.php?action=projet&traitement=delete&id=' + item.id_projet + '"><i class="flaticon-circle"></i></a></div>';
+									table += '</div></td></tr>';
+								});
+								table += '</tbody></table>';
+								$('#html_table').remove();
+								$('#datatable-container').html(table);
+
+								$(window).ajaxComplete(function() {
+									$('.m-datatable').mDatatable({
+										data: {
+											saveState: {cookie: false},
+										},
+										search: {
+											input: $('#generalSearch'),
+										},
+										columns: [
+											{
+											field: 'Deposit Paid',
+											type: 'number',
+											},
+											{
+											field: 'Order Date',
+											type: 'date',
+											format: 'YYYY-MM-DD',
+											},
+										],
+										translate: {
+											records: {
+												processing: 'Traitement en cours...',
+												noRecords: 'Aucun &eacute;l&eacute;ment &agrave; afficher'
+											},
+											toolbar: {
+												pagination: {
+													items: {
+														default: {
+															first: 'Premier',
+															prev: 'Pr&eacute;c&eacute;dent',
+															next: 'Suivant',
+															last: 'Dernier',
+															more: 'More pages',
+															input: 'Page number',
+															select: 'Select page size'
+														},
+														info: "Affichage de l'&eacute;l&eacute;ment {{start}} &agrave; {{end}} sur {{total}} &eacute;l&eacute;ments"
+													}
+												}
+											}
+										}
+									});
+								});
+							});
+
+							
+							
+						});
+					});
+				</script>
 				
 			</body>
 			<!-- end::Body -->
