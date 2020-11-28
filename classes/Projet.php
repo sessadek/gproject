@@ -145,8 +145,8 @@ class Projet
 	{
 		$n = (0+str_replace(",", "", $s));
         if (!is_numeric($n)) return false;
-        elseif ($n > 1000000) return round(($n/1000000), 2).'M';
-        else return round($n, 2);
+        if ($n > 1000000) return round(($n/1000000), 2).'M';
+        return round($n, 2);
     }
 
     public function getPBYType($dat)

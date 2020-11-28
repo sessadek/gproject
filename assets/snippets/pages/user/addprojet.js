@@ -51,6 +51,7 @@ $(document).ready(function() {
         var estimation = document.getElementById('estimation').value;
         var demonstration = document.getElementById('demonstration').value;
         var notes = document.getElementById('notes').value;
+        var id_user = document.getElementById('id_user').value;
         var couleur = document.getElementById('couleur').value;
         var btn = $(this);
         
@@ -113,6 +114,8 @@ $(document).ready(function() {
     $('#html_table').on('click', 'tr', function () {
       var name = $('td', this).eq().text();
       var id_projet = document.getElementById('id_projet').value;
+      var id_user = $(this).attr('data-user-id');
+      $("#id_user_e option[value=" + id_user + "]").attr('selected','selected');
       $("#id_backlog_e").val(table.row(this).data()[0]);
       $("#fonctionnalite_e").val(table.row(this).data()[1]);
       $("#importance_e").val(table.row(this).data()[2]);
@@ -181,6 +184,8 @@ $(document).ready(function() {
         var estimation = document.getElementById('estimation_e').value;
         var demonstration = document.getElementById('demonstration_e').value;
         var notes = document.getElementById('notes_e').value;
+        var id_user_e = document.getElementById('id_user_e').value;
+        
         var couleur = document.getElementById('couleur').value;
         var id = $("#"+id_backlog+"-"+id_projet).data('id');
         var btn = $(this);
@@ -189,7 +194,7 @@ $(document).ready(function() {
         $.ajax({
             url: '../../../../classes/ajax/addbacklog.php',
             type: 'post',
-            data : 'id=' + id + '&id_projet=' + id_projet + '&id_backlog=' + id_backlog + '&fonctionnalite=' + fonctionnalite + '&importance=' + importance + '&estimation=' + estimation + '&demonstration=' + demonstration + '&notes=' + notes + '&couleur=' + couleur + '&ajax_action=update',
+            data : 'id=' + id + '&id_projet=' + id_projet + '&id_backlog=' + id_backlog + '&fonctionnalite=' + fonctionnalite + '&importance=' + importance + '&estimation=' + estimation + '&demonstration=' + demonstration + '&notes=' + notes + '&id_user_e=' + id_user_e + '&couleur=' + couleur + '&ajax_action=update',
             success: function(response, status, xhr, $form) {
                     if (response == 'inserted') {
                         setTimeout(function() {

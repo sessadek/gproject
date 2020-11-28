@@ -226,15 +226,14 @@
 															    		$backlogs = BackLog::getBackLogByIdProjet($_GET['id_projet']);
 															    		foreach ($backlogs as $backlog) {
 
-															    			echo "<tr bgcolor='".$backlog['couleur']."' data-id='".$backlog['id']."' id='".$backlog['id_backlog']."-".$backlog['id_projet']."'>
+															    			echo "<tr bgcolor='".$backlog['couleur']."' data-user-id=" . $backlog['id_user'] . " data-id='".$backlog['id']."' id='".$backlog['id_backlog']."-".$backlog['id_projet']."'>
 																		    		<td>".$backlog['id_backlog']."</td>
 																		    		<td>".$backlog['fonctionnalite']."</td>
 																		    		<td>".$backlog['importance']."</td>
 																		    		<td>".$backlog['estimation']."</td>
 																		    		<td>".$backlog['demonstration']."</td>
-																		    		<td>".$backlog['notes']."</td>
-																		    	</tr>
-																		    	";
+																					<td>".$backlog['notes']."</td>
+																				</tr>";
 															    		}
 															    	?>
 															    </tbody>
@@ -350,6 +349,20 @@
 												                        </label>
 												                        <textarea class="form-control" id="notes" name="notes"></textarea>
 												                    </div>
+																	<div class="form-group">
+																		<label for="id_user" class="form-control-label">
+																			Users :
+																		</label>
+																		<select name="id_user" id="id_user"  class="form-control">
+																			<option value=""></option>
+																			<?php
+																				$users = Team::getTeamByProjet($_GET['id_projet']);
+																				foreach($users as $user) : 
+																			?>
+																				<option value="<?= $user['id_user']; ?>"><?= $user['nom'] . ' ' . $user['prenom'] ;?></option>
+																			<?php endforeach; ?>
+																		</select>
+																	</div>
 												                    <div class="form-group">
 												                        <label for="couler" class="form-control-label">
 												                            Couleur :
@@ -418,6 +431,20 @@
 												                        </label>
 												                        <textarea class="form-control" id="notes_e" name="notes_e"></textarea>
 												                    </div>
+																	<div class="form-group">
+																		<label for="id_user_e" class="form-control-label">
+																			Users :
+																		</label>
+																		<select name="id_user_e" id="id_user_e"  class="form-control">
+																			<option value=""></option>
+																			<?php
+																				$users = Team::getTeamByProjet($_GET['id_projet']);
+																				foreach($users as $user) : 
+																			?>
+																				<option value="<?= $user['id_user']; ?>"><?= $user['nom'] . ' ' . $user['prenom'] ;?></option>
+																			<?php endforeach; ?>
+																		</select>
+																	</div>
 												                    <div class="form-group">
 												                        <label for="couleur_e" class="form-control-label">
 												                            Couleur :
@@ -493,6 +520,7 @@
 
 							<?php if (isset($_GET['id_projet']) && !empty($_GET['id_projet'])): ?>
 
+							<?php require('statistiqueProjet.php') ?>
 							<?php require('team.php') ?>
 
 							<div class="m-portlet">
@@ -623,6 +651,7 @@
 							                        </label>
 							                        <input type="text" class="form-control" name="datefin" id="m_datetimepicker_2" readonly >
 							                    </div>
+												
 							                    <div class="form-group">
 							                        <label for="id_backlog_" class="form-control-label">
 							                            Backlog :

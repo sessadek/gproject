@@ -34,7 +34,7 @@ class Livrable
     	$query->bindValue(':id_projet', $id_projet);
     	$query->bindValue(':prograssion', $prograssion);
     	$query->bindValue(':montant', $montant);
-    	$query->bindValue(':etat', $etat);
+		$query->bindValue(':etat', $etat);
 
 		if($query->execute())
 			return true;
@@ -55,7 +55,8 @@ class Livrable
    		$query->bindValue(':description', $description);
    		$query->bindValue(':prograssion', $prograssion);
     	$query->bindValue(':montant', $montant);
-    	$query->bindValue(':etat', $etat);
+		$query->bindValue(':etat', $etat);
+		
 
 		if($query->execute())
 			return true;

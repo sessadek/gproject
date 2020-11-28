@@ -542,7 +542,7 @@
 																$soc=Societe::get($projet["id_societe"]);
 																$sec=Secteur::getByID($soc["id_secteur"]);
 																$pro=Livrable::getProgras($projet["id_projet"]);
-																$sum=Livrable::getSum($projet["id_projet"],2);
+																$sum=Livrable::getSum($projet["id_projet"], 2);
 														 ?>
 														<div class="m-widget4__item">
 															<div class="m-widget4__img m-widget4__img--pic">

@@ -94,33 +94,33 @@ $(document).ready(function() {
             if (response == 'edited') {
                 $('#monplaning').fullCalendar( 'refetchEvents' );
                 setTimeout(function() {
-                            var notify = $.notify(content, { 
-                                type: 'success',
-                                allow_dismiss: true,
-                                newest_on_top: true,
-                                mouse_over:  true,
-                                showProgressbar:  false,
-                                spacing: 10,                    
-                                timer: 2000,
-                                placement: {
-                                    from: 'top', 
-                                    align: 'right'
-                                },
-                                offset: {
-                                    x: 30, 
-                                    y: 30
-                                },
-                                delay: 2000,
-                                z_index: 10000,
-                                animate: {
-                                    enter: 'animated bounce',
-                                    exit: 'animated bounce'
-                                }
-                            });
-                            notify.update('message', '<strong>Event Modifie</strong>');
-                            notify.update('type', 'success');
-                            notify.update('progress', 100);
-                        }, 800);
+					var notify = $.notify(content, { 
+						type: 'success',
+						allow_dismiss: true,
+						newest_on_top: true,
+						mouse_over:  true,
+						showProgressbar:  false,
+						spacing: 10,                    
+						timer: 2000,
+						placement: {
+							from: 'top', 
+							align: 'right'
+						},
+						offset: {
+							x: 30, 
+							y: 30
+						},
+						delay: 2000,
+						z_index: 10000,
+						animate: {
+							enter: 'animated bounce',
+							exit: 'animated bounce'
+						}
+					});
+					notify.update('message', '<strong>Event Modifie</strong>');
+					notify.update('type', 'success');
+					notify.update('progress', 100);
+				}, 800);
             }
         }
     });
