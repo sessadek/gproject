@@ -60,6 +60,7 @@
 																		?>
 
 																		<select class="form-control m-input m-input--solid" name="" id="search_by_etat">
+																			<option value="0">Tous</option>
 																			<?php foreach($etats as $etat) : ?>
 																				<option value="<?= $etat['id_etat']?>"><?= $etat['libelle_etat']?></option>
 																			<?php endforeach ?>
@@ -241,10 +242,14 @@
 									table += '</div></td></tr>';
 								});
 								table += '</tbody></table>';
-								$('#html_table').remove();
-								$('#datatable-container').html(table);
+								
 
-								$(window).ajaxComplete(function() {
+								
+							});
+
+							$(window).ajaxComplete(function() {
+								$('.m-datatable').remove();
+								$('#datatable-container').html(table);
 									$('.m-datatable').mDatatable({
 										data: {
 											saveState: {cookie: false},
@@ -287,7 +292,6 @@
 										}
 									});
 								});
-							});
 
 							
 							

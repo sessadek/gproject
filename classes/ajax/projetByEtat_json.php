@@ -5,7 +5,9 @@ require("../../require.php");
 $output_arrays  = array();
 
 
-$results = Projet::getprojetByEtatJson($_GET['etat_projet']);
+
+$results = ($_GET['etat_projet'] == 0) ? Projet::getprojetListe($_GET['etat_projet']) : Projet::getprojetByEtatJson($_GET['etat_projet']);
+
 foreach ($results as $result) {
 	$array = array(
 				"id_projet" => $result['id_projet'],
