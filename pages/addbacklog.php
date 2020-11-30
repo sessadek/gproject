@@ -90,19 +90,23 @@
 													<tbody>
 														<?php
 														$espace=" " ;
-															$resultats = Projet::getprojetListe();
+															if($_SESSION['level'] == 3) {
+																$resultats = Projet::getprojetListeByUserId($_SESSION['id']);
+															} else {
+																$resultats = Projet::getprojetListe();
+															}
 															//Tools::d($resultats);
 															foreach ($resultats as $resultat) {
-													    		echo "<tr>
-													    			<td>".$resultat['id_projet']."</td>
-													    			<td>".$resultat['nom_projet']."</td>
-													    			<td>".$resultat['date_debut']."</td>
-													    			<td>".$resultat['date_livraison']."</td>
-													    			<td>
-													    				<a href='/pages/addprojet.php?id_projet=".$resultat['id_projet']."&modal=backlog' class='btn btn-warning'>Backlog</a>
-													    			</td>
-													    																    			
-													    		</tr>";
+																$tr = "<tr><td>".$resultat['id_projet']."</td>
+																<td>".$resultat['nom_projet']."</td>
+																<td>".$resultat['date_debut']."</td>
+																<td>".$resultat['date_livraison']."</td>";
+																if($_SESSION['level'] == 3) {
+																	$tr .= "<td></td></tr>";
+																} else {
+																	$tr .= "<td><a href='/pages/addprojet.php?id_projet=".$resultat['id_projet']."&modal=backlog' class='btn btn-warning'>Backlog</a></td></tr>";
+																}
+																echo $tr;
 													    	}
 														?>
 													</tbody>

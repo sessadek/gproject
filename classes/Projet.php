@@ -36,6 +36,24 @@ class Projet
     	return $resultats;
 	}
 
+	public function getprojetListeByUserId($id_user){
+		global $conn;
+		$query = $conn->prepare("SELECT p.id_projet,p.nom_projet,p.description,s.raison_social, u.nom, u.prenom,(us.nom) AS nom1, (us.prenom) AS prenom1,i.libelle_paiment,e.libelle_etat,p.date_debut,p.date_livraison 
+								FROM projets p 
+								JOIN societes s ON p.id_societe=s.id_societe 
+								JOIN users u ON p.id_responsable1=u.id_user 
+								JOIN users us ON p.id_responsable2=us.id_user 
+								JOIN paiment i ON p.etat_paiment=i.id_paiment
+								JOIN etat_projet e ON p.etat_projet=e.id_etat
+								JOIN projet_user pu ON pu.projet_id = p.id_projet
+								WHERE pu.user_id = :user_id");
+		$query->bindValue(':user_id', $id_user);
+		$query->execute();
+		$resultats = $query->fetchAll();
+		// t.libelle_type,
+    	return $resultats;
+	}
+
 
 	public function add($nom_projet, $description, $id_societe, $id_resp1, $id_resp2,  $etat, $date1, $date2, $etat_projet, $montant) // $id_type, 
 	{

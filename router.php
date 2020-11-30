@@ -96,7 +96,7 @@ if (isset($_POST)) {
 		case 'projet':
 			switch ($_POST['traitement']) {
 				case 'add':
-					if(Projet::add($_POST['nomprojet'], $_POST['description'], $_POST['societe'], $_POST['responsable1'], $_POST['responsable2'],  $_POST['etat'], $_POST['date1'], $_POST['date2'], $_POST['etat'], $_POST['montant'])){ // $_POST['type'],
+					if(Projet::add($_POST['nomprojet'], $_POST['description'], $_POST['societe'], $_POST['responsable1'], $_POST['responsable2'],  $_POST['etat'], $_POST['date1'], $_POST['date2'], $_POST['etat_projet'], $_POST['montant'])){ // $_POST['type'],
 			    		$confirm = "Projet ajouté";
 			    		header('Location: pages/listeprojet.php?confirm='.$confirm);
 			    	}else{
@@ -106,7 +106,7 @@ if (isset($_POST)) {
 					break;
 					
 				case 'edit':
-					if(Projet::edit($_POST['id_projet'],$_POST['nomprojet'], $_POST['description'], $_POST['societe'], $_POST['responsable1'], $_POST['responsable2'], $_POST['etat'], $_POST['date1'], $_POST['date2'], $_POST['etat'], $_POST['montant'])){ //$_POST['type'],
+					if(Projet::edit($_POST['id_projet'],$_POST['nomprojet'], $_POST['description'], $_POST['societe'], $_POST['responsable1'], $_POST['responsable2'], $_POST['etat'], $_POST['date1'], $_POST['date2'], $_POST['etat_projet'], $_POST['montant'])){ //$_POST['type'],
 			    		$confirm = "Projet modifié";
 			    		header('Location: pages/listeprojet.php?confirm='.$confirm);
 			    	}else{

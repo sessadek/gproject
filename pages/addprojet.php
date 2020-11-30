@@ -141,7 +141,7 @@
 										<div class="form-group m-form__group row">
 											<div class="col-lg-6 controller">
 												<label>Etat du projet :</label>
-												<select class="form-control m-select" name="etat">
+												<select class="form-control m-select" name="etat_projet">
 													<?php 
 														$etats = Etat::getetatlist();
 														foreach ($etats as $etat) {
