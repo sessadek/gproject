@@ -225,6 +225,9 @@
 															    	<?php 
 															    		$backlogs = BackLog::getBackLogByIdProjet($_GET['id_projet']);
 															    		foreach ($backlogs as $backlog) {
+																			if(!$backlog['id_user']) {
+																				$backlog['id_user'] = 0;
+																			}
 
 															    			echo "<tr bgcolor='".$backlog['couleur']."' data-user-id=" . $backlog['id_user'] . " data-id='".$backlog['id']."' id='".$backlog['id_backlog']."-".$backlog['id_projet']."'>
 																		    		<td>".$backlog['id_backlog']."</td>
@@ -351,7 +354,7 @@
 												                    </div>
 																	<div class="form-group">
 																		<label for="id_user" class="form-control-label">
-																			Users :
+																			assingé a :
 																		</label>
 																		<select name="id_user" id="id_user"  class="form-control">
 																			<option value=""></option>
@@ -433,7 +436,7 @@
 												                    </div>
 																	<div class="form-group">
 																		<label for="id_user_e" class="form-control-label">
-																			Users :
+																			assingé a :
 																		</label>
 																		<select name="id_user_e" id="id_user_e"  class="form-control">
 																			<option value=""></option>

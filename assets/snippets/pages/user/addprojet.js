@@ -114,8 +114,10 @@ $(document).ready(function() {
     $('#html_table').on('click', 'tr', function () {
       var name = $('td', this).eq().text();
       var id_projet = document.getElementById('id_projet').value;
-      var id_user = $(this).attr('data-user-id');
-      $("#id_user_e option[value=" + id_user + "]").attr('selected','selected');
+        if($(this).attr('data-user-id') != 0) {
+            var id_user = $(this).attr('data-user-id');
+            $("#id_user_e option[value=" + id_user + "]").attr('selected','selected');
+        }
       $("#id_backlog_e").val(table.row(this).data()[0]);
       $("#fonctionnalite_e").val(table.row(this).data()[1]);
       $("#importance_e").val(table.row(this).data()[2]);
