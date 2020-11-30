@@ -85,12 +85,13 @@
 															$espace=" ";
 															$users = User::getListe();
 															foreach ($users as $user) {
-																	if (isset($projet['id_user'])) {
-																if ($projet['id_user'] == $user['id_societe']) {
-																	$selected = "selected";
+																$selected = '';
+																if ($projet['id_responsable1'] == $user['id_user']) {
+																	$selected = " selected ";
 																}
-															}
-																echo "<option value='".$user['id_user']."'>".$user['nom']."".$espace."".$user['prenom']."</option>";
+																if($user['id_role'] == 1 || $user['id_role'] == 2) {
+																	echo "<option " . $selected . "value='".$user['id_user']."'>".$user['nom']."".$espace."".$user['prenom']."</option>";
+																}
 															}
 														?>
 												</select>
@@ -104,7 +105,13 @@
 															$espace=" ";
 															$users = User::getListe();
 															foreach ($users as $user) {
-																echo "<option value='".$user['id_user']."'>".$user['nom']."".$espace."".$user['prenom']."</option>";
+																$selected = '';
+																if ($projet['id_responsable2'] == $user['id_user']) {
+																	$selected = " selected ";
+																}
+																if($user['id_role'] == 1 || $user['id_role'] == 2) {
+																	echo "<option " . $selected . "value='".$user['id_user']."'>".$user['nom']."".$espace."".$user['prenom']."</option>";
+																}
 															}
 														?>
 												</select>
